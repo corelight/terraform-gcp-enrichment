@@ -29,7 +29,7 @@ resource "google_pubsub_subscription" "sub" {
   push_config {
     push_endpoint = "${google_cloud_run_v2_service.enrichment_service.uri}/event"
     oidc_token {
-      service_account_email = data.google_service_account.cloud_run_service_account.email
+      service_account_email = google_service_account.service_account.email
     }
     attributes = {
       x-goog-version = "v1"

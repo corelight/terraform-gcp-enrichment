@@ -4,7 +4,7 @@ resource "google_cloud_run_v2_service" "enrichment_service" {
   ingress  = "INGRESS_TRAFFIC_INTERNAL_ONLY"
 
   template {
-    service_account = data.google_service_account.cloud_run_service_account.email
+    service_account = google_service_account.service_account.email
     containers {
       image = "${var.cloud_run_image}:${var.cloud_run_image_tag}"
       resources {

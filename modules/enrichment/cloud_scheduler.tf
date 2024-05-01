@@ -10,7 +10,7 @@ resource "google_cloud_scheduler_job" "enrichment_collection_scheduler_job" {
     http_method = "POST"
     uri         = "${google_cloud_run_v2_service.enrichment_service.uri}/scheduled"
     oidc_token {
-      service_account_email = data.google_service_account.cloud_run_service_account.email
+      service_account_email = google_service_account.service_account.email
     }
   }
 
