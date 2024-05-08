@@ -1,5 +1,5 @@
 resource "google_organization_iam_custom_role" "enrichment_folder_enum_role" {
-  org_id      = var.organization_id
+  org_id = var.organization_id
   permissions = [
     "resourcemanager.folders.list",
     "resourcemanager.folders.get",
