@@ -104,7 +104,7 @@ variable "cloud_run_bucket_object_prefix" {
 variable "cloud_run_locations" {
   description = "The list of locations the Cloud Run service will look for applicable cloud resources"
   type        = list(string)
-  default     = [
+  default = [
     "asia-east1",
     "asia-east2",
     "asia-northeast1",
@@ -181,5 +181,5 @@ variable "message_retention_duration" {
 variable "labels" {
   description = "[Optional] Any Labels you wish to add to all resources deployed by this module"
   type        = object({})
-  default = {}
+  default     = {}
 }
