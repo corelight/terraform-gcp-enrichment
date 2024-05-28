@@ -2,14 +2,30 @@
 
 <img src="docs/overview.png" alt="overview">
 
-## Getting Started
+## Usage
 
-Corelight's GCP Cloud Enrichment requires the deployment of a supporting
-Cloud Run service and its supporting infrastructure which will ensure the data
-enriching your logs are always up-to-date with the latest state of your cloud
-resources.
+```terraform
+module "enrichment_org_iam" {
+  source = "github.com/corelight/terraform-gcp-enrichment//modules/org_iam"
+  
+  organization_id = "987654321"
+  custom_org_role_id = "corelight_enrichment_role"
+}
 
-### Deployment
+module "enrichment" {
+  source = "github.com/corelight/terraform-gcp-enrichment"
+
+  location               = "us-central1"
+  zone                   = "us-central1-a"
+  project_id             = "project-12345" 
+  enrichment_bucket_name = "enrichment-data-54321"
+  folder_id              = "123456789" # The root folder to enumerate
+  service_account_id     = "enrichment-service-account"
+  organization_role_id   = module.enrichment_org_iam.custom_org_role_id
+}
+```
+
+## Deployment
 
 The variables for this module all have default values that can be overwritten
 to meet your naming and compliance standards.

@@ -14,6 +14,14 @@ locals {
   }
 }
 
+provider "google" {
+  project = local.project_id
+  region  = local.location
+
+  # Uncomment this if needed
+  # user_project_override = true
+}
+
 ####################################################################################################
 # Set up the GCS bucket for enrichment data
 ####################################################################################################
@@ -41,9 +49,10 @@ module "custom_org_role" {
 
 ####################################################################################################
 # Deploy Cloud Run service and create service account with proper permissions
+# Replace relative source with "source = github.com/corelight/terraform-gcp-enrichment"
 ####################################################################################################
 module "enrichment" {
-  source = "../../modules/enrichment"
+  source = "../.."
 
   enrichment_bucket_name = google_storage_bucket.enrichment_bucket.name
   folder_id              = local.folder_to_observe
