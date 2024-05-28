@@ -39,6 +39,7 @@ variable "service_account_display_name" {
   default     = "Corelight Enrichment"
 }
 
+# Variables with Defaults
 variable "project_role_id" {
   description = "The ID of the role granting access to GCS"
   type        = string

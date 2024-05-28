@@ -10,7 +10,7 @@ resource "google_cloud_run_v2_service" "enrichment_service" {
       resources {
         limits = {
           cpu    = 1
-          memory = "128Mi"
+          memory = "512Mi"
         }
       }
       ports {
