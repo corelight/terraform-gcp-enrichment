@@ -180,7 +180,7 @@ variable "message_retention_duration" {
 }
 
 variable "labels" {
-  description = "[Optional] Any Labels you wish to add to all resources deployed by this module"
+  description = "(optional) Any Labels you wish to add to all resources deployed by this module"
   type        = object({})
   default     = {}
 }
