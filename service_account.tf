@@ -19,6 +19,8 @@ resource "google_project_iam_custom_role" "enrichment_project_role" {
   permissions = [
     "storage.objects.create",
     "storage.objects.delete",
+    "storage.objects.list",
+    "storage.objects.get",
     "run.executions.cancel",
     "run.jobs.run",
     "run.routes.invoke"
