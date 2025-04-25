@@ -17,6 +17,7 @@ resource "google_cloud_asset_folder_feed" "folder_feed" {
 
 resource "google_pubsub_topic" "feed_output" {
   name                       = var.topic_name
+  project                    = var.project_id
   message_retention_duration = var.message_retention_duration
 
   labels = var.labels

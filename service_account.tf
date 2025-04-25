@@ -1,6 +1,7 @@
 resource "google_service_account" "service_account" {
   account_id   = var.service_account_id
   display_name = var.service_account_display_name
+  project      = var.project_id
 }
 
 resource "google_folder_iam_binding" "folder_binding" {
@@ -27,6 +28,7 @@ resource "google_project_iam_custom_role" "enrichment_project_role" {
   ]
   role_id = var.project_role_id
   title   = var.project_role_title
+  project = var.project_id
 }
 
 resource "google_cloud_run_service_iam_binding" "enrichment_permissions" {
