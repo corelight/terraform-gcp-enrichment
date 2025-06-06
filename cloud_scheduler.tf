@@ -1,5 +1,6 @@
 resource "google_cloud_scheduler_job" "enrichment_collection_scheduler_job" {
   name             = var.scheduler_job_name
+  project          = var.project_id
   region           = var.location
   description      = "Invoke Corelight Cloud Enrichment Synchronization"
   schedule         = var.scheduler_job_cron

@@ -1,5 +1,6 @@
 resource "google_cloud_run_v2_service" "enrichment_service" {
   name     = var.cloud_run_service_name
+  project  = var.project_id
   location = var.location
   ingress  = "INGRESS_TRAFFIC_INTERNAL_ONLY"
 
@@ -17,7 +18,7 @@ resource "google_cloud_run_v2_service" "enrichment_service" {
         container_port = "8080"
       }
       env {
-        name  = "REGIONS"
+        name = "REGIONS"
         value = join(",", var.cloud_run_locations)
       }
       env {
