@@ -5,9 +5,9 @@ resource "google_service_account" "service_account" {
 }
 
 resource "google_folder_iam_binding" "folder_binding" {
-  folder = var.folder_id
+  folder  = var.folder_id
   members = ["serviceAccount:${google_service_account.service_account.email}"]
-  role   = var.organization_role_id
+  role    = var.organization_role_id
 }
 
 resource "google_storage_bucket_iam_member" "gcs_access" {
@@ -36,5 +36,5 @@ resource "google_cloud_run_service_iam_binding" "enrichment_permissions" {
   project  = var.project_id
   location = var.location
   service  = google_cloud_run_v2_service.enrichment_service.name
-  members = ["serviceAccount:${google_service_account.service_account.email}"]
+  members  = ["serviceAccount:${google_service_account.service_account.email}"]
 }

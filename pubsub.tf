@@ -37,6 +37,6 @@ resource "google_pubsub_subscription" "sub" {
     }
   }
 
-  labels = var.labels
+  labels     = var.labels
   depends_on = [google_cloud_run_v2_service.enrichment_service]
 }

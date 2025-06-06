@@ -18,7 +18,7 @@ resource "google_cloud_run_v2_service" "enrichment_service" {
         container_port = "8080"
       }
       env {
-        name = "REGIONS"
+        name  = "REGIONS"
         value = join(",", var.cloud_run_locations)
       }
       env {
