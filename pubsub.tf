@@ -17,14 +17,15 @@ resource "google_cloud_asset_folder_feed" "folder_feed" {
 
 resource "google_pubsub_topic" "feed_output" {
   name                       = var.topic_name
+  project                    = var.project_id
   message_retention_duration = var.message_retention_duration
-
-  labels = var.labels
+  labels                     = var.labels
 }
 
 resource "google_pubsub_subscription" "sub" {
-  name  = var.pubsub_subscription_name
-  topic = google_pubsub_topic.feed_output.id
+  name    = var.pubsub_subscription_name
+  project = var.project_id
+  topic   = google_pubsub_topic.feed_output.id
 
   push_config {
     push_endpoint = "${google_cloud_run_v2_service.enrichment_service.uri}/event"
